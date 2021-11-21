@@ -9,7 +9,7 @@
         <h1 class="mt-4">Danh sách nhân viên</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Phim</li>
+            <li class="breadcrumb-item active">Nhân viên</li>
         </ol>
 
         <div class="card mb-4">
@@ -22,10 +22,22 @@
                             <strong>Thành công</strong>
                         </div>
                     }
+                    else if (ViewBag.mes == "2")
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Email này đã tồn tại</strong>
+                        </div>
+                    }
+                    else if (ViewBag.mes == "3")
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Tên người dùng này đã tồn tại</strong>
+                        </div>
+                    }
                     else
                     {
                         <div class="alert alert-danger">
-                            <strong>Thất bại</strong>
+                            <strong>Dữ liệu của nhân viên này đang tồn tại ở  chấm công</strong>
                         </div>
                     }
                 }
@@ -62,29 +74,56 @@
                         @foreach (var item in Model)
                         {
                             index++;
-                        <tr>
-                            <td>@index</td>
-                            <td>@item.fullname</td>
-                            <td>@item.username</td>
-                            <td>@item.email</td>
-                            @{ 
-                                var nameModelUpdate1 = "#exampleModal" + item.id_user;
-                            }
-                           
-                            <td>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="@nameModelUpdate1">
-                                    Cập nhật
-                                </button>
-                                <a class="btn btn-warning" href="/user/detail/@item.id_user">
-                                    Xem chi tiết
-                                </a>
-                                <button type="button" class="btn btn-danger">
-                                    Xóa
-                                </button>
-                            </td>
+                            <tr>
+                                <td>@index</td>
+                                <td>@item.fullname</td>
+                                <td>@item.username</td>
+                                <td>@item.email</td>
+                                @{
+                                    var nameModelUpdate1 = "#exampleModal" + item.id_user;
+                                    var nameModalDelete1 = "#exampleModalDelete" + item.id_user;
+                                    var nameModalDelete = "exampleModalDelete" + item.id_user;
+                                }
 
-                        </tr>
+                                <td>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="@nameModelUpdate1">
+                                        Cập nhật
+                                    </button>
+                                    <a class="btn btn-warning" href="/user/detail/@item.id_user">
+                                        Xem chi tiết
+                                    </a>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                            data-bs-target="@nameModalDelete1">
+                                        Xóa
+                                    </button>
+                                </td>
+                                <!-- Modal -->
+
+                            </tr>
+                            <div class="modal fade" id="@nameModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn xóa ?</h5>
+                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bài đăng : <span>@item.fullname</span>
+                                            <form action="/ManageStaff/DeleteStaff" method="post">
+                                                <input type="hidden" class="form-control" id="id" name="id_user" value="@item.id_user">
+                                                <div class="modal-footer mt-1">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             var nameModelUpdate = "exampleModal" + item.id_user;
                             <div class="modal fade" id="@nameModelUpdate" tabindex="-1" aria-labelledby="exampleModalLabel"
                                  aria-hidden="true">
@@ -131,7 +170,7 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label for="category-film" class="col-form-label">Email :</label>
-                                                            <input type="text" class="form-control" id="tenphim" readonly name="email" tabindex="1"  value="@item.email" required maxlength="20">
+                                                            <input type="text" class="form-control" id="tenphim" readonly name="email" tabindex="1" value="@item.email" required maxlength="20">
                                                         </div>
                                                         @{
                                                             string dateS = String.Format("{0:yyyy-MM-dd}", item.birthday);
@@ -145,14 +184,14 @@
                                                     <div class="row">
                                                         <div class="col-6">
                                                             <label for="category-film" class="col-form-label">User name :</label>
-                                                            <input type="text" class="form-control" id="tenphim" readonly name="username" tabindex="1"  value="@item.username" required maxlength="20">
+                                                            <input type="text" class="form-control" id="tenphim" readonly name="username" tabindex="1" value="@item.username" required maxlength="20">
                                                         </div>
                                                         <div class="col-6">
                                                             <label for="category-film" class="col-form-label">Mật khẩu:</label>
                                                             <input type="password" class="form-control" id="" name="password" value="@item.password" tabindex="1" required maxlength="20">
                                                         </div>
                                                         <div class="col-6">
-                                                    
+
                                                             <input type="hidden" class="form-control" id="id_user" name="id_user" value="@item.id_user" tabindex="1" required maxlength="20">
                                                         </div>
 
@@ -160,7 +199,7 @@
 
                                                         <input type="hidden" class="form-control" id="id_role" name="status" value="@item.status" tabindex="1" required maxlength="20">
 
-                                                      
+
 
                                                     </div>
                                                     <div class="modal-footer" style="margin-top:10px">
@@ -225,56 +264,73 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Tên Phim:</label>
-                                                        <input type="text" class="form-control" id="category-film">
+                                        <form enctype="multipart/form-data" action="/ManageStaff/AddStaff" method="post">
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Họ và tên :</label>
+                                                        <input type="text" class="form-control" id="tenphim" name="fullname" tabindex="1" value="" required maxlength="20">
                                                     </div>
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Diễn viên:</label>
-                                                        <input type="text" class="form-control" id="category-film">
-                                                    </div>
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Đạo diễn:</label>
-                                                        <input type="text" class="form-control" id="category-film">
-                                                    </div>
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Thời lượng:</label>
-                                                        <input type="text" class="form-control" id="category-film">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6 ">
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Thể loại:</label>
-                                                        <select class="form-select" aria-label="Default select example">
-                                                            <option selected>Open this select menu</option>
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Giới tính:</label>
+                                                        <select class="form-select" aria-label="Default select example" id="nganhhang" tabindex="8" name="gender" required>
+                                                                                                   
+                                                                <option value="0">Nữ</option>                                                  
+                                                                <option value="1">Nam</option>
                                                         </select>
                                                     </div>
-                                                    <div class="mb-4 mt-4">
-                                                        <label for="exampleFormControlFile1">Ảnh Thumbnail</label>
-                                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Số điện thoại :</label>
+                                                        <input type="text" class="form-control" id="dienvien" value="" name="phoneNumber" tabindex="2" required>
                                                     </div>
-                                                    <div class="">
-                                                        <label for="category-film" class="col-form-label">Trailer:</label>
-                                                        <input type="text" class="form-control" id="category-film">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Địa chỉ:</label>
+                                                        <input type="text" class="form-control" id="tenphim" name="address" value="" tabindex="1" required>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="">
-                                                <label for="category-film" class="col-form-label">Nội dung:</label>
-                                                <textarea name="description" id="editor" cols="30" rows="30"></textarea>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Email :</label>
+                                                        <input type="text" class="form-control" id="tenphim"  name="email" tabindex="1" value="" required maxlength="20">
+                                                    </div>
+                                                  
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Ngày sinh :</label>
+                                                        <input type="date" class="form-control" id="tenphim" name="birthday" value="" tabindex="1" required maxlength="20">
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Tên người dùng:</label>
+                                                        <input type="text" class="form-control" id="tenphim"  name="username" tabindex="1" value="" required maxlength="20">
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Mật khẩu:</label>
+                                                        <input type="password" class="form-control" id="" name="password" value="" tabindex="1" required maxlength="20">
+                                                    </div>
+                                                    <div class="col-6">
+
+                                                        <input type="hidden" class="form-control" id="id_user" name="id_user" value="" tabindex="1" required maxlength="20">
+                                                    </div>
+
+                                                    <input type="hidden" class="form-control" id="id_role" name="id_role" value="1" tabindex="1" required maxlength="20">
+
+                                                    <input type="hidden" class="form-control" id="id_role" name="status" value="1" tabindex="1" required maxlength="20">
+
+
+
+                                                </div>
+                                                <div class="modal-footer" style="margin-top:10px">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                                                </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save </button>
-                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
