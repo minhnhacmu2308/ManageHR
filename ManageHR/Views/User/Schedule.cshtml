@@ -1,0 +1,54 @@
+﻿@model List<ManageHR.Models.Schedule>
+@{
+    ViewBag.Title = "Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Bảng công</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item active">Bảng công</li>
+        </ol>
+
+        <div class="card mb-4">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Ngày</th>
+                          
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Ngày</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{ 
+                            var index = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            index++;
+                            string dateS = String.Format("{0:yyyy-MM-dd}", item.date);
+                            <tr>
+                                <td>@index</td>
+                                <td>@dateS</td>
+                            </tr>
+                        }
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+

@@ -1,0 +1,79 @@
+﻿<div id="layoutSidenav_nav">
+    @{ var userInfomatiom = (ManageHR.Models.User)Session["USER"]; }
+    <nav style="background-color: #F1F1F1 !important" class="sb-sidenav accordion " id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+
+                <a class="nav-link collapsed" href="/Home/Index">
+                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                    Bảng điều khiển
+
+                </a>
+                @if (userInfomatiom.Role.id_role == 2)
+                {
+                    @* <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+               data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Quản lý thông tin nhân viên
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                 data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="/User/Index">Học sinh</a>
+                    <a class="nav-link" href="/User/ListGiangVien">Giáo viên </a>
+
+                </nav>
+            </div>*@
+                    <a class="nav-link collapsed" href="/ManageStaff/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Quản lý nhân viên
+
+                    </a>
+
+                    <a class="nav-link collapsed" href="/Score/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Chấm công nhân viên
+
+                    </a>
+                    <a class="nav-link collapsed" href="/Schedule/Index">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Chính sách khen thưởng
+                    </a>
+                    <a class="nav-link collapsed" href="/Score/Rank">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Chính sách kỉ luật
+                    </a>
+                }
+                else if (userInfomatiom.Role.id_role == 1)
+                {
+
+                 
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                       data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Thông tin cá nhân
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                         data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link"href="/User/Index">Thông tin</a>
+                            <a class="nav-link" href="/User/Edit">Sửa</a>
+
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="/User/Schedule">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Bảng công
+
+                    </a>
+
+                }
+
+            </div>
+        </div>
+
+    </nav>
+</div>
+
