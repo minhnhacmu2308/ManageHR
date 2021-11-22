@@ -41,5 +41,10 @@ namespace ManageHR.Daos
             obj.id_category = policy.id_category;
             myDb.SaveChanges();
         }
+
+        public Policy getPolicy(int id)
+        {
+            return myDb.policies.FirstOrDefault(x => x.id_policy == id);
+        }
     }
 }

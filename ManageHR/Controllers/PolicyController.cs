@@ -55,15 +55,17 @@ namespace ManageHR.Controllers
         public ActionResult EditBonus(Policy policy)
         {
             policy.id_category = 1;
-            Policy check = policyDao.checkExist(policy);
-            if (check == null)
+            Policy check1 = policyDao.getPolicy(policy.id_policy);
+           
+            if (check1.name.Equals(policy.name))
             {
                 policyDao.edit(policy);
                 return RedirectToAction("Bonus", new { mess = "1" });
             }
             else
             {
-                if(!check.name.Equals(policy.name))
+                Policy check = policyDao.checkExist(policy);
+                if (check == null)
                 {
                     policyDao.edit(policy);
                     return RedirectToAction("Bonus", new { mess = "1" });
@@ -112,15 +114,17 @@ namespace ManageHR.Controllers
         public ActionResult EditTreatment(Policy policy)
         {
             policy.id_category = 2;
-            Policy check = policyDao.checkExist(policy);
-            if (check == null)
+            Policy check1 = policyDao.getPolicy(policy.id_policy);
+
+            if (check1.name.Equals(policy.name))
             {
                 policyDao.edit(policy);
                 return RedirectToAction("Treatment", new { mess = "1" });
             }
             else
             {
-                if (!check.name.Equals(policy.name))
+                Policy check = policyDao.checkExist(policy);
+                if (check == null)
                 {
                     policyDao.edit(policy);
                     return RedirectToAction("Treatment", new { mess = "1" });
@@ -169,15 +173,17 @@ namespace ManageHR.Controllers
         public ActionResult EditDiscipline(Policy policy)
         {
             policy.id_category = 3;
-            Policy check = policyDao.checkExist(policy);
-            if (check == null)
+            Policy check1 = policyDao.getPolicy(policy.id_policy);
+
+            if (check1.name.Equals(policy.name))
             {
                 policyDao.edit(policy);
                 return RedirectToAction("Discipline", new { mess = "1" });
             }
             else
             {
-                if (!check.name.Equals(policy.name))
+                Policy check = policyDao.checkExist(policy);
+                if (check == null)
                 {
                     policyDao.edit(policy);
                     return RedirectToAction("Discipline", new { mess = "1" });
@@ -187,7 +193,6 @@ namespace ManageHR.Controllers
                     return RedirectToAction("Discipline", new { mess = "2" });
                 }
             }
-
         }
     }
 }
