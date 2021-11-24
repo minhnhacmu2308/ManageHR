@@ -15,6 +15,10 @@ namespace ManageHR.Daos
             return myDb.Users.Where(x => x.Role.id_role == 1).ToList();
         }
 
+        public int count()
+        {
+            return myDb.Users.Where(x => x.Role.id_role == 1).ToList().Count();
+        }
 
         public void add(User user)
         {

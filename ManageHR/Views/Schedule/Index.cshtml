@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Danh sách chấm công</h1>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                @if (ViewBag.Msg != null)
+                {
+                    if (ViewBag.Msg == "1")
+                    {
+                        <div class="alert alert-success">
+                            <strong>Thành công</strong>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Nhân viên đã chấm công</strong>
+                        </div>
+                    }
+
+                }
+                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModalAdd">
+                    Thêm mới
+                </button>
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên nhân viên</th>
+                            <th>Ngày chấm công </th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên Hoc Hàm</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @{
+                            var index = 0;
+                        }
+                        @foreach (var item in ViewBag.List)
+                        {
+                            index++;
+                            var idModelDel = "exampleModalDel" + item.id_schedule;
+                            var idEx1 = "exampleModalLabel" + item.id_schedule;
+                            string ngaycc = String.Format("{0:yyyy-MM-dd}", item.date);
+                            <tr>
+                                <td>@index</td>
+
+                                <td>@item.User.fullname</td>
+                                <td>@ngaycc</td>
+                                <td>
+
+                                    <button style="width:100px" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#@idEx1">
+                                        Sửa
+                                    </button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#@idModelDel" style="width:100px" class="btn btn-danger"> Xóa</button>
+                                    <div class="modal fade" id="@idModelDel" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Bạn chắc chắn muốn xóa ?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    Chấm công ngày <strong>@ngaycc</strong> của nhân viên <strong>@item.User.fullname</strong>
+                                                    <form action="/Schedule/Delete" method="post">
+                                                        <input type="hidden" class="form-control" id="id" name="id" value="@item.id_schedule">
+                                                        <div class="modal-footer" style="margin-top: 20px">
+                                                            <button style="width:100px" type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                Đóng
+                                                            </button>
+                                                            <button style="width:100px" type="submit" class="btn btn-danger"> Xóa</button>
+
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <div class="modal fade" id="@idEx1" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Sửa </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form enctype="multipart/form-data" action="/Schedule/Update" method="post">
+                                                <input type="hidden" class="form-control" id="id" name="id" value="@item.id_schedule">
+                                                <div class="col">
+                                                    <div class="col-12">
+                                                        <label for="category-film" class="col-form-label">Nhân viên: </label>
+                                                        <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="nhanvien" required>
+                                                            @foreach (var item1 in ViewBag.ListStaff)
+                                                            {
+                                                                if (item1.id_user == item.id_user)
+                                                                {
+                                                                    <option value="@item1.id_user" selected>@item1.fullname</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@item1.id_user">@item1.fullname</option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <label for="category-film" class="col-form-label">Ngày chấm công:</label>
+                                                        <input type="date" class="form-control" id="daodien" name="ngaycc" tabindex="3" value="@ngaycc" required>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                                    <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Update-->
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</main>
+<!-- Modal Add-->
+<div class="modal fade" id="exampleModalAdd" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form enctype="multipart/form-data" action="/Schedule/Add" method="post">
+                    <div class="col">
+
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label">Nhân viên: </label>
+                            <select class="form-select" aria-label="Default select example" id="theloai" tabindex="8" name="nhanvien" required>
+                                <option value="" selected>Chọn nhân viên</option>
+                                @foreach (var item1 in ViewBag.ListStaff)
+                                {
+                                    <option value="@item1.id_user">@item1.fullname</option>
+
+                                }
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="category-film" class="col-form-label">Ngày chấm công:</label>
+                            <input type="date" class="form-control" id="daodien" name="ngaycc" tabindex="3" required>
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button style="width:100px" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button style="width:100px" type="submit" class="btn btn-primary">Thêm </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

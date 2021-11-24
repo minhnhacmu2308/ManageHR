@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManageHR.Daos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace ManageHR.Controllers
 {
     public class HomeController : Controller
     {
+        UserDao userDao = new UserDao();
         public ActionResult Index()
         {
             var user = Session["USER"];
@@ -17,6 +19,7 @@ namespace ManageHR.Controllers
             }
             else
             {
+                ViewBag.Count = userDao.count();
                 return View();
             }
         }

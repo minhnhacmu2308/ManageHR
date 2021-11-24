@@ -132,6 +132,7 @@
     <Compile Include="Controllers\ManageStaffController.cs" />
     <Compile Include="Controllers\ModulesController.cs" />
     <Compile Include="Controllers\PolicyController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Daos\PolicyDao.cs" />
     <Compile Include="Daos\ScheduleDao.cs" />
@@ -215,6 +216,7 @@
     <Content Include="Views\Policy\Bonus.cshtml" />
     <Content Include="Views\Policy\Treatment.cshtml" />
     <Content Include="Views\Policy\Discipline.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
