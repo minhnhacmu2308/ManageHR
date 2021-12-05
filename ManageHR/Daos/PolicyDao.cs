@@ -38,6 +38,9 @@ namespace ManageHR.Daos
            
             var obj = myDb.policies.FirstOrDefault(x => x.id_policy == policy.id_policy);
             obj.name = policy.name;
+            obj.content = policy.content;
+            obj.format = policy.format;
+            obj.note = policy.note;
             obj.id_category = policy.id_category;
             myDb.SaveChanges();
         }

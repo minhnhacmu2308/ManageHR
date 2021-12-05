@@ -173,6 +173,7 @@
                                                         </div>
                                                         @{
                                                             string dateS = String.Format("{0:yyyy-MM-dd}", item.birthday);
+                                                            string dateB = String.Format("{0:yyyy-MM-dd}", item.startDay);
                                                         }
                                                         <div class="col-6">
                                                             <label for="category-film" class="col-form-label">Ngày sinh :</label>
@@ -199,6 +200,28 @@
                                                         <input type="hidden" class="form-control" id="id_role" name="status" value="@item.status" tabindex="1" required maxlength="20">
 
 
+
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Số CMND :</label>
+                                                            <input type="text" class="form-control" id="dienvien"  name="identityCard" tabindex="2" value="@item.identityCard" required>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Tài khoản ngân hàng:</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="bankAccount"  tabindex="1" value="@item.bankAccount" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Kiến nghị :</label>
+                                                            <input type="text" class="form-control" id="tenphim" name="request" tabindex="1" value="@item.request" required>
+                                                        </div>
+
+                                                        <div class="col-6">
+                                                            <label for="category-film" class="col-form-label">Ngày vào làm :</label>
+                                                            <input type="date" class="form-control" id="tenphim" name="startDay" value="@dateB" tabindex="1" required>
+                                                        </div>
 
                                                     </div>
                                                     <div class="modal-footer" style="margin-top:10px">
@@ -273,9 +296,9 @@
                                                     <div class="col-6">
                                                         <label for="category-film" class="col-form-label">Giới tính:</label>
                                                         <select class="form-select" aria-label="Default select example" id="nganhhang" tabindex="8" name="gender" required>
-                                                                                                   
-                                                                <option value="0">Nữ</option>                                                  
-                                                                <option value="1">Nam</option>
+
+                                                            <option value="0">Nữ</option>
+                                                            <option value="1">Nam</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -292,9 +315,9 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="category-film" class="col-form-label">Email :</label>
-                                                        <input type="text" class="form-control" id="tenphim"  name="email" tabindex="1" value="" required maxlength="20">
+                                                        <input type="text" class="form-control" id="tenphim" name="email" tabindex="1" value="" required maxlength="20">
                                                     </div>
-                                                  
+
                                                     <div class="col-6">
                                                         <label for="category-film" class="col-form-label">Ngày sinh :</label>
                                                         <input type="date" class="form-control" id="tenphim" name="birthday" value="" tabindex="1" required maxlength="20">
@@ -304,7 +327,7 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <label for="category-film" class="col-form-label">Tên người dùng:</label>
-                                                        <input type="text" class="form-control" id="tenphim"  name="username" tabindex="1" value="" required maxlength="20">
+                                                        <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" value="" required maxlength="20">
                                                     </div>
                                                     <div class="col-6">
                                                         <label for="category-film" class="col-form-label">Mật khẩu:</label>
@@ -320,6 +343,28 @@
                                                     <input type="hidden" class="form-control" id="id_role" name="status" value="1" tabindex="1" required maxlength="20">
 
 
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Số CMND :</label>
+                                                        <input type="text" class="form-control" id="dienvien" value="" name="identityCard" tabindex="2" required>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Tài khoản ngân hàng:</label>
+                                                        <input type="text" class="form-control" id="tenphim" name="bankAccount" value="" tabindex="1" required>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Kiến nghị :</label>
+                                                        <input type="text" class="form-control" id="tenphim" name="request" tabindex="1" value="" required >
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <label for="category-film" class="col-form-label">Ngày vào làm :</label>
+                                                        <input type="date" class="form-control" id="tenphim" name="startDay" value="" tabindex="1" required >
+                                                    </div>
 
                                                 </div>
                                                 <div class="modal-footer" style="margin-top:10px">

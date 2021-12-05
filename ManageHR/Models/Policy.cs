@@ -17,6 +17,15 @@ namespace ManageHR.Models
         [Required]
         public string name { get; set; }
 
+        [StringLength(1000)]
+        public string content { get; set; }
+
+        [StringLength(1000)]
+        public string format { get; set; }
+
+        [StringLength(1000)]
+        public string note { get; set; }
+
         public int id_category { get; set; }
 
         public virtual Category Category { get; set; }

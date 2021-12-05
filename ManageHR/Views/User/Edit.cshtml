@@ -46,7 +46,17 @@
                             </div>
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Địa chỉ:</label>
-                                <input type="text" class="form-control" id="tenphim" name="address" value="@ViewBag.list.address" tabindex="1" required >
+                                <input type="text" class="form-control" id="tenphim" name="address" value="@ViewBag.list.address" tabindex="1" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Số CMND :</label>
+                                <input type="text" class="form-control" id="dienvien" value="@ViewBag.list.identityCard"  name="identityCard"  required>
+                            </div>
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Tài khoản ngân hàng :</label>
+                                <input type="text" class="form-control" id="tenphim" name="bankAccount" value="@ViewBag.list.bankAccount"   required>
                             </div>
                         </div>
                         <div class="row">
@@ -56,6 +66,7 @@
                             </div>
                             @{
                                 string dateS = String.Format("{0:yyyy-MM-dd}", @ViewBag.list.birthday);
+                                string dateB = String.Format("{0:yyyy-MM-dd}", @ViewBag.list.startDay);
                             }
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Ngày sinh :</label>
@@ -68,18 +79,26 @@
                                 <label for="category-film" class="col-form-label">User name :</label>
                                 <input type="text" class="form-control" id="tenphim" name="username" tabindex="1" readonly value="@ViewBag.list.username" required maxlength="20">
                             </div>
-
                             <div class="col-6">
-                                <label for="category-film" class="col-form-label">Ngày sinh :</label>
+                                <label for="category-film" class="col-form-label">Ngày vào làm :</label>
+                                <input type="date" class="form-control" id="tenphim" name="startDay" value="@dateB" tabindex="1" readonly>
+                            </div>
+                            <div class="col-6">
                                 <input type="hidden" class="form-control" id="id_user" name="id_user" value="@ViewBag.list.id_user" tabindex="1" required maxlength="20">
                             </div>
 
-                                <input type="hidden" class="form-control" id="id_role" name="id_role" value="@ViewBag.list.Role.id_role" tabindex="1" required maxlength="20">
-                      
-                                <input type="hidden" class="form-control" id="id_role" name="status" value="@ViewBag.list.status" tabindex="1" required maxlength="20">
-                           
-                                <input type="hidden" class="form-control" id="id_role" name="password" value="@ViewBag.list.password" tabindex="1" required maxlength="20">
-                            
+                            <input type="hidden" class="form-control" id="id_role" name="id_role" value="@ViewBag.list.Role.id_role" tabindex="1" required maxlength="20">
+
+                            <input type="hidden" class="form-control" id="id_role" name="status" value="@ViewBag.list.status" tabindex="1" required maxlength="20">
+
+                            <input type="hidden" class="form-control" id="id_role" name="password" value="@ViewBag.list.password" tabindex="1" required maxlength="20">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="category-film" class="col-form-label">Kiến nghị :</label>
+                                <input type="text" class="form-control" id="dienvien" value="@ViewBag.list.request" readonly name="request" tabindex="2" required>
+                            </div>
                         </div>
                         <div class="modal-footer" style="margin-top:10px">
 

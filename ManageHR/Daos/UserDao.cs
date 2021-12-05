@@ -37,6 +37,10 @@ namespace ManageHR.Daos
             obj.fullname = user.fullname;
             obj.phoneNumber = user.phoneNumber;
             obj.username = user.username;
+            obj.identityCard = user.identityCard;
+            obj.bankAccount = user.bankAccount;
+            obj.startDay = user.startDay;
+            obj.request = user.request;
             obj.birthday = user.birthday;
             obj.status = user.status;
             obj.id_role = user.id_role;

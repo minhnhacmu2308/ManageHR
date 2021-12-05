@@ -7,11 +7,6 @@
 <main>
     <div class="container-fluid px-4">
         <h1 class="mt-4">Chính sách khen thưởng</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Chính sách khen thưởng</li>
-        </ol>
-
         <div class="card mb-4">
             <div class="card-header">
                 @if (ViewBag.mes != null)
@@ -52,8 +47,10 @@
                         <tr>
                             <th>STT</th>
                             <th>Tên</th>
-                            <th>Action</th>
-
+                            <th>Nội dung khen thưởng</th>
+                            <th>Hình thức khen thưởng</th>
+                            <th>Ghi chú</th>
+                            <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -76,21 +73,24 @@
                             var nameModalDelete = "exampleModalDelete" + item.id_policy;
 
                             index++;
-                            <tr>
-                                <td>@index</td>
-                                <td>@item.name</td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="@nameUpdate1">
-                                        Cập nhật
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="@nameModalDelete1">
-                                        Xóa
-                                    </button>
-                                </td>
+                        <tr>
+                            <td>@index</td>
+                            <td>@item.name</td>
+                            <td>@item.content</td>
+                            <td>@item.format</td>
+                            <td>@item.note</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="@nameUpdate1">
+                                    Cập nhật
+                                </button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                        data-bs-target="@nameModalDelete1">
+                                    Xóa
+                                </button>
+                            </td>
 
-                            </tr>
+                        </tr>
                             <div class="modal fade" id="@nameModalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -101,7 +101,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Bài đăng : <span>@item.name</span>
+                                            Chính sách : <span>@item.name</span>
                                             <form action="/Policy/DeleteBonus" method="post">
                                                 <input type="hidden" class="form-control" id="id" name="id_policy" value="@item.id_policy">
                                                 <div class="modal-footer mt-1">
@@ -130,6 +130,21 @@
                                                            class="col-form-label">Tên chính sách:</label>
                                                     <input type="text" class="form-control" name="name" value="@item.name" id="category-film">
                                                     <input type="hidden" class="form-control" name="id_policy" value="@item.id_policy" id="category-film">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="category-film"
+                                                           class="col-form-label">Nội dung:</label>
+                                                    <input type="text" class="form-control" name="content" value="@item.content" id="category-film">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="category-film"
+                                                           class="col-form-label">Hình thức:</label>
+                                                    <input type="text" class="form-control" name="format" value="@item.format" id="category-film">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="category-film"
+                                                           class="col-form-label">Ghi chú:</label>
+                                                    <input type="text" class="form-control" name="note" value="@item.note" id="category-film">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -162,6 +177,21 @@
                                                 <label for="category-film"
                                                        class="col-form-label">Tên chính sách:</label>
                                                 <input type="text" class="form-control" name="name" id="category-film" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Nội dung:</label>
+                                                <input type="text" class="form-control" name="content" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Hình thức:</label>
+                                                <input type="text" class="form-control" name="format" id="category-film">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="category-film"
+                                                       class="col-form-label">Ghi chú:</label>
+                                                <input type="text" class="form-control" name="note" id="category-film">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

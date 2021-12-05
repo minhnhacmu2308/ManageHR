@@ -338,3 +338,4 @@ D:\.NET MVC\ManageHR\ManageHR\obj\Debug\ManageHR.csproj.CoreCompileInputs.cache
 D:\.NET MVC\ManageHR\ManageHR\obj\Debug\ManageHR.csproj.CopyComplete
 D:\.NET MVC\ManageHR\ManageHR\obj\Debug\ManageHR.dll
 D:\.NET MVC\ManageHR\ManageHR\obj\Debug\ManageHR.pdb
+D:\.NET MVC\ManageHR\ManageHR\obj\Debug\ManageHR.Migrations.nguyen.resources

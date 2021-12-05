@@ -40,6 +40,17 @@ namespace ManageHR.Models
 
         public int status { get; set; }
 
+        public DateTime startDay { get; set; }
+
+        [StringLength(255)]
+        public string identityCard { get; set; }
+
+        [StringLength(255)]
+        public string bankAccount { get; set; }
+
+        [StringLength(1000)]
+        public string request { get; set; }
+
         public int id_role { get; set; }
 
         public virtual Role Role { get; set; }

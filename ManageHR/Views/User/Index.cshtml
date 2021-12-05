@@ -43,7 +43,16 @@
                                 <input type="text" class="form-control" id="tenphim" name="hoten" value="@ViewBag.list.address" tabindex="1" readonly required maxlength="20">
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Số CMND :</label>
+                                <input type="text" class="form-control" id="dienvien" value="@ViewBag.list.identityCard" readonly name="sdt" tabindex="2" required>
+                            </div>
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Tài khoản ngân hàng<span style="color:red">* </span>:</label>
+                                <input type="text" class="form-control" id="tenphim" name="hoten" value="@ViewBag.list.bankAccount" tabindex="1" readonly required maxlength="20">
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Email :</label>
@@ -51,6 +60,7 @@
                             </div>
                             @{
                                 string dateS = String.Format("{0:yyyy-MM-dd}", @ViewBag.list.birthday);
+                                string dateB = String.Format("{0:yyyy-MM-dd}", @ViewBag.list.startDay);
                             }
                             <div class="col-6">
                                 <label for="category-film" class="col-form-label">Ngày sinh :</label>
@@ -63,9 +73,17 @@
                                 <label for="category-film" class="col-form-label">User name :</label>
                                 <input type="text" class="form-control" id="dienvien" value="@ViewBag.list.username" readonly name="sdt" tabindex="2" required>
                             </div>
-                           
+                            <div class="col-6">
+                                <label for="category-film" class="col-form-label">Ngày vào làm :</label>
+                                <input type="date" class="form-control" id="tenphim" name="email" value="@dateB" tabindex="1" readonly autofocus required maxlength="20">
+                            </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="category-film" class="col-form-label">Kiến nghị :</label>
+                                <input type="text" class="form-control" id="dienvien" value="@ViewBag.list.request" readonly name="sdt" tabindex="2" required>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

@@ -144,6 +144,10 @@
     <Compile Include="Migrations\202111210715347_crate-dabase.designer.cs">
       <DependentUpon>202111210715347_crate-dabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112050721375_nguyen.cs" />
+    <Compile Include="Migrations\202112050721375_nguyen.designer.cs">
+      <DependentUpon>202112050721375_nguyen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ManageDbContext.cs" />
@@ -238,6 +242,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202111210715347_crate-dabase.resx">
       <DependentUpon>202111210715347_crate-dabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112050721375_nguyen.resx">
+      <DependentUpon>202112050721375_nguyen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
