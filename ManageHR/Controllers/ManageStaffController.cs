@@ -17,6 +17,7 @@ namespace ManageHR.Controllers
         {
             var obj = userDao.getListStaff();
             ViewBag.mes = mess;
+            ViewBag.Count = userDao.count();
             return View(obj);
         }
 
